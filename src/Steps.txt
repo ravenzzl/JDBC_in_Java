@@ -1,0 +1,36 @@
+Steps to connect JDBC in java :-
+
+1.download or copy mysql jar to lib folder(if there is no lib then create on)
+
+2.click project->properties->java buildpath->add mysql in libary
+
+3.use this code to intialize db connection use below code 
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","root");
+			
+4.types of statement;
+           we can use statement and prepared statement for execute SQL Statements
+     1.statement :- 
+              *compile sql statement everytime we run code
+     2.prepared statement :- 
+              * it will compile only once and we set parametrized query in this 
+              * compile only once
+        
+4.types to execute statements
+          
+          1.insert,update,delete --> these are come under stmt.executeUpdate();
+                                 --> it will return as number of row affected
+                                 
+                    syntax :
+                       String sql="insert into account values(?,?,?,?);";     -->parameterized query
+					   PreparedStatement stmt=con.prepareStatement(sql);
+				       stmt.setString(1, "lenin");
+				       stmt.setString(2, "Selvamani");                         -->set values 
+			           stmt.setString(3, "lenin@gmail.com");
+			           stmt.setString(4, "1000");
+			           int rs=stmt.executeUpdate();                             -->since it is insert statement we are using executeUpdate() methods
+			           if(rs>0) {
+				           System.out.println(rs+" rows got affected");
+			            }
+          
