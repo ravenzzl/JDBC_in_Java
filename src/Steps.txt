@@ -22,7 +22,7 @@ Steps to connect JDBC in java :-
           1.insert,update,delete --> these are come under stmt.executeUpdate();
                                  --> it will return as number of row affected
                                  
-                    syntax :
+                       syntax :
                        String sql="insert into account values(?,?,?,?);";     -->parameterized query
 					   PreparedStatement stmt=con.prepareStatement(sql);
 				       stmt.setString(1, "lenin");
@@ -33,4 +33,31 @@ Steps to connect JDBC in java :-
 			           if(rs>0) {
 				           System.out.println(rs+" rows got affected");
 			            }
+			            
+			            
+
+          2.to read --> we can use executeQuery();
+                       we need to use resultset to read data from data
+                  
+                 syntax :
+                 PreparedStatement stmt=con.prepareStatement("select * from mydb.account");
+		  	     ResultSet rs= stmt.executeQuery();
+		         while(rs.next()) {          -->rs.next() -->to move cursor (or) move to next value
+		    	   System.out.println(rs.getString(1));
+		    	   System.out.println(rs.getString(2));
+		    	   System.out.println(rs.getString(3));
+		    	   System.out.println(rs.getString(4));
+		         }
           
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
